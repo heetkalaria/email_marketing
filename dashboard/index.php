@@ -1,9 +1,10 @@
 <?php
-//include('../login/session.php');
-//if(!isset($_SESSION['login_user'])){
-//header("location: ../login/index.php"); 
-//}
-//  require_once('../login/db.php');
+  include('../login/session.php');
+  if(!isset($_SESSION['login_user']))
+  {
+    header("location: ../login/index.php"); 
+  }
+  require_once('../db.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">

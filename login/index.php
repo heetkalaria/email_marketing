@@ -1,3 +1,10 @@
+<?php
+  include('login.php');
+  if(isset($_SESSION['login_user']))
+  {
+    header("location: ../dashboard/index.php");
+  }
+?>
 <style>
 :root {
   --input-padding-x: 1.5rem;
@@ -135,19 +142,19 @@ body {
         <div class="card card-signin my-5">
           <div class="card-body">
             <h5 class="card-title text-center">Sign In</h5>
-            <form class="form-signin">
+            <form class="form-signin" method="post">
               <div class="form-label-group">
-                <input type="text" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                <input type="text" name="username" id="inputEmail" class="form-control" placeholder="Username" required autofocus>
                 <label for="inputEmail">Username</label>
               </div>
 
               <div class="form-label-group">
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
                 <label for="inputPassword">Password</label>
               </div>
 
               
-              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
+              <button class="btn btn-lg btn-primary btn-block text-uppercase" name="submit" type="submit">Sign in</button>
               
             </form>
           </div>
