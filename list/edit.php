@@ -9,6 +9,10 @@ header("location: ../login/index.php");
     {	
         $id = mysqli_real_escape_string($con, $_POST['id']);
         $emailid = mysqli_real_escape_string($con, $_POST['emailid']);
+        $name = mysqli_real_escape_string($con, $_POST['name']);
+        $mobile = mysqli_real_escape_string($con, $_POST['mobile']);
+        $dob = mysqli_real_escape_string($con, $_POST['dob']);
+        
 
         if(empty($emailid)) 
         {	
@@ -16,17 +20,11 @@ header("location: ../login/index.php");
         } 
         else 
         {	
-            $sql = "select * from myemail where emailid='".$emailid."'";
+            $sql = "select * from customerlist where emailid='".$emailid."'";
             $result = mysqli_query($con, $sql);
-            if(mysqli_num_rows($result) > 0)
-            {
-                $errorMsg = 'Email Already Exists';
-            }
-            else
-            {
-                $result = mysqli_query($con, "UPDATE myemail SET emailid='$emailid' WHERE id=$id");
-                header("Location: index.php");
-            }    
+            
+                $result = mysqli_query($con, "UPDATE customerlist SET emailid='$emailid',name='$name',mobile='$mobile',dob='$dob' WHERE id=$id");
+                header("Location: index.php");   
         }
     }
 ?>
@@ -51,16 +49,18 @@ header("location: ../login/index.php");
     <?php include '../layout.php';?>
     <?php
         $id = $_GET['id'];
-        $result = mysqli_query($con, "SELECT * FROM myemail WHERE id=$id");
+        $result = mysqli_query($con, "SELECT * FROM customerlist WHERE id=$id");
         while($res = mysqli_fetch_array($result))
         {
             $emailid = $res['emailid'];
-
+            $name = $res['name'];
+            $mobile = $res['mobile'];
+            $dob = $res['dob'];
         }
     ?>
     <div class="container-fluid" id="container-wrapper">
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Edit Refernce</h1>
+            <h1 class="h3 mb-0 text-gray-800">Edit Customer Details</h1>
         </div>
         <div class="row">
             <?php
@@ -85,11 +85,29 @@ header("location: ../login/index.php");
                 <div class="card-body">
                     <form action="edit.php" method="post" enctype="multipart/form-data">
                         <div class="form-group">
+                            <label for="exampleInputEmail1">Enter Name</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                placeholder="Enter Name" name="name" value="<?php echo $name;?>">
+                        </div>
+                        <div class="form-group">
                             <label for="exampleInputEmail1">Enter Email ID</label>
                             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                                placeholder="Enter Name" name="emailid" value="<?php echo $emailid;?>">
+                                placeholder="Enter Email" name="emailid" value="<?php echo $emailid;?>">
                         </div>
-                        
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Enter Phone Number</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                placeholder="Enter Mobile Number" name="mobile" value="<?php echo $mobile;?>">
+                        </div>
+                        <div class="form-group" id="simple-date1">
+                            <label for="simpleDataInput">Date Of Birth</label>
+                            <div class="input-group date">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-calendar"></i></span>
+                                </div>
+                                <input type="text" name="dob" class="form-control" value="<?php echo $dob;?>" id="simpleDataInput">
+                            </div>
+                        </div>
                         <input type="hidden" name="id" value="<?php echo $_GET['id'];?>">
                         <button type="submit" class="btn btn-primary" name="update" value="update">Submit</button>
                     </form>
@@ -108,6 +126,17 @@ header("location: ../login/index.php");
   <script src="../js/ruang-admin.min.js"></script>
   <script src="../vendor/chart.js/Chart.min.js"></script>
   <script src="../js/demo/chart-area-demo.js"></script>  
+  <script src="../vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+  <script>
+        $(document).ready(function () {
+            $('#simple-date1 .input-group.date').datepicker({
+            format: 'yyyy-mm-dd',
+            todayBtn: 'linked',
+            todayHighlight: true,
+            autoclose: true,        
+            });
+        });
+  </script>
 </body>
 
 </html>

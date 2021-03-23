@@ -18,7 +18,7 @@
         </a>
       </li>
       
-      <li class="nav-item">
+      <!--<li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsepurchase" aria-expanded="true"
           aria-controls="collapseForm">
           <i class="far fa-fw fa-window-maximize"></i>
@@ -31,6 +31,12 @@
             <a class="collapse-item" href="../category/index.php">Customer Category</a>
           </div>
         </div>
+      </li>-->
+      <li class="nav-item">
+        <a class="nav-link" href="../list/index.php">
+          <i class="far fa-fw fa-window-maximize"></i>
+          <span>Customer List</span>
+        </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="../myemail/index.php">
