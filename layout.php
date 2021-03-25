@@ -45,7 +45,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="../templates/index.php">
+        <a class="nav-link" href="../emailtemplate/index.php">
           <i class="far fa-fw fa-window-maximize"></i>
           <span>Email Templates</span>
         </a>
