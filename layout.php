@@ -50,6 +50,12 @@
           <span>Email Templates</span>
         </a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../campaign/index.php">
+          <i class="far fa-fw fa-window-maximize"></i>
+          <span>Email Campaign</span>
+        </a>
+      </li>
       <hr class="sidebar-divider">
       
     </ul>
