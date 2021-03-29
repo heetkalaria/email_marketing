@@ -78,14 +78,16 @@
                         <td><?php echo $counter ?></td>
                         <td><?php echo $row['campaignname'];?></td>
                         <td><?php echo $row['campaigndesc'];?></td>
-                        <td><?php echo $row['iterations'];?></td>
+                        
                         <td>
                           <input type="button" name="view" class="btn btn-sm btn-warning view_template" id="<?php echo $row['id'] ?>" value="View">
                         </td>
                         
                         
                         <td>
-                          
+                          <a class="btn btn-sm btn-success" href="run.php?id=<?php echo $row['id']?>">
+                            Run
+                          </a>
                           <a class="btn btn-sm btn-info" href="edit.php?id=<?php echo $row['id']?>">
                             Edit
                           </a>
