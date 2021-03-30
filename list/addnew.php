@@ -4,6 +4,7 @@
     {
         header("location: ../login/index.php"); 
     }
+    include('../sendemail.php');
     require_once('../db.php');
     if(isset($_POST['btnSave']))
     {
@@ -28,6 +29,8 @@
             {
                 $sql = "insert into customerlist(name,emailid,mobile,dob) values('".$name."','".$emailid."','".$mobile."','".$date."')";
                 $result = mysqli_query($con, $sql);
+
+                sendEmail('Welcome',$emailid,'mail@heetkalaria.tech',$name,'Heet Kalaria','welcome.html');
                 if($result)
                 {
                     $successMsg = 'New record added successfully';
